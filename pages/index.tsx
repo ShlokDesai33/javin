@@ -141,7 +141,7 @@ export default function Home() {
                               <GitFork className="w-5 h-5 ml-2 mr-1" />
                               {hit.forks}
 
-                              <p className="ml-2">{hit.size / 1000} kB</p>
+                              <p className="ml-2">{hit.size / 1000} MB</p>
                             </div>
                           </div>
 
