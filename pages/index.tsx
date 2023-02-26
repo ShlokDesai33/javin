@@ -37,7 +37,7 @@ export default function Home() {
             <div className="">
               <h1 className="pt-20 font-bold text-5xl">Hey there, I&apos;m Javin</h1>
               <div className="flex items-center mt-5 gap-x-1 text-gray-700">
-                <p>Tell about the cool project you want to make ......</p>
+                <p>Tell me about the cool project you want to make ......</p>
                 {
                   isLoading ? (
                     <p> in the text box below.</p>
