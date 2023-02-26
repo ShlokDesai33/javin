@@ -16,6 +16,7 @@ const loadingMessages = [
 ];
 
 export default function Spinner() {
+  // pick a random index to 
   const [loadingMessage, setLoadingMessage] = useState(loadingMessages[0]);
 
   useEffect(() => {
@@ -30,14 +31,12 @@ export default function Spinner() {
   
   return (
     <div className="flex justify-center items-center mt-20 gap-x-3">
-        <Ring
-          size={30}
-          lineWeight={5}
-          speed={2}
-          color="grey"
-        />
-
-
+      <Ring
+        size={30}
+        lineWeight={5}
+        speed={2}
+        color="grey"
+      />
       <p>
         {loadingMessage}
       </p>

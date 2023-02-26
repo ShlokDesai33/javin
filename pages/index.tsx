@@ -64,7 +64,7 @@ export default function Home() {
                 setIsLoading(true);
 
                 try {
-                  fetch('http://64.33.187.77:8003/upload', {
+                  fetch('https://javin.jmsgvn.com/upload/', {
                     method: 'POST',
                     body: JSON.stringify({
                       // @ts-ignore
@@ -147,7 +147,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <p className="text-gray-700 mt-4">Created by Julia, Muthu, James & Shlok.</p>
+                  <p className="text-gray-700 mt-8">Created by Julia, Muthu, James & Shlok.</p>
                 </article>
               ) : null
             }
