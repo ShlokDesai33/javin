@@ -8,7 +8,6 @@ import { BugDroid, GitFork } from 'phosphor-react';
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<any>(null);
-  console.log(data);
 
   return (
     <>
