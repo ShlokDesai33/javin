@@ -36,7 +36,7 @@ export default function Home() {
         <main className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-8">
           <div className="">
             <div className="">
-              <h1 className="pt-20 font-bold text-5xl">Hey there, I'm Javin</h1>
+              <h1 className="pt-20 font-bold text-5xl">Hey there, I&apos;m Javin</h1>
               <div className="flex items-center mt-5 gap-x-1 text-gray-700">
                 <p>Tell about the cool project you want to make ......</p>
                 {
@@ -118,7 +118,7 @@ export default function Home() {
 
                     <div className="flex gap-3">
                       {data.keywords.map((keyword: string) => (
-                        <div className="text-[#0ACF83] py-1 px-4 rounded-full bg-[#0ACF83]/20">
+                        <div className="text-[#0ACF83] py-1 px-4 rounded-full bg-[#0ACF83]/20" key={keyword}>
                           {keyword}
                         </div>
                       ))}
@@ -128,7 +128,7 @@ export default function Home() {
                   <div className="mt-8">
                     <p className="text-gray-700">Repositories you should consider:</p>
                     {data.hits.map((hit: any) => (
-                      <div className="w-full bg-slate-100 mt-4 px-6 py-4 rounded-md">
+                      <div className="w-full bg-slate-100 mt-4 px-6 py-4 rounded-md" key={hit.name}>
                         <div className="flex items-center justify-between">
                           <p className="text-lg">
                             {hit.name}
