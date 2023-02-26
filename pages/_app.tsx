@@ -1,6 +1,23 @@
-import 'hooks/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { Manrope } from 'next/font/google';
+import { AppProps } from 'next/app';
+import '@/styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const manrope = Manrope({
+  subsets: ['latin'],
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <style jsx global>
+        {`
+          :root {
+            --inter-font: ${manrope.style.fontFamily};
+          }
+        `}
+      </style>
+      <Component {...pageProps} />
+    </>
+  );
 }
+export default MyApp;
