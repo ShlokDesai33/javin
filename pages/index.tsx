@@ -35,8 +35,8 @@ export default function Home() {
         </div>
 
         <main className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-8">
-          <div className="">
-            <div className="">
+          <div>
+            <div>
               <h1 className="pt-20 font-bold text-5xl">Hey there, I&apos;m Javin</h1>
               <div className="flex items-center mt-5 gap-x-1 text-gray-700">
                 <p>Tell me about the cool project you want to make ......</p>
