@@ -17,7 +17,7 @@ const loadingMessages = [
 
 export default function Spinner() {
   // pick a random index to 
-  const [loadingMessage, setLoadingMessage] = useState(loadingMessages[0]);
+  const [loadingMessage, setLoadingMessage] = useState(loadingMessages[Math.round(Math.random() * 11)]);
 
   useEffect(() => {
     const interval = setInterval(() => {
