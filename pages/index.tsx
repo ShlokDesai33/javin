@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Spinner from 'components/spinner';
 import Typed from "react-typed";
-import { GitFork } from 'phosphor-react';
+import { BugDroid, GitFork } from 'phosphor-react';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<any>(null);
+  console.log(data);
 
   return (
     <>
@@ -63,6 +64,7 @@ export default function Home() {
                 // @ts-ignore
                 if (!e.target[0].value) return;
                 setIsLoading(true);
+                setData(null);
 
                 try {
                   fetch('https://javin.jmsgvn.com/upload/', {
@@ -114,46 +116,47 @@ export default function Home() {
                 <Spinner />
               ) : data ? (
                 <article className="pt-10">
-                  <div className="flex flex-wrap items-center">
-                    <p className="text-base mr-2">Keywords you searched for</p>
-
-                    <div className="flex gap-3">
-                      {data.keywords.map((keyword: string) => (
-                        <div className="text-[#0ACF83] py-1 px-4 rounded-full bg-[#0ACF83]/20" key={keyword}>
-                          {keyword}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-8">
-                    <p className="text-gray-700">Repositories you should consider:</p>
-                    {data.hits.map((hit: any) => (
-                      <div className="w-full bg-slate-100 mt-4 px-6 py-4 rounded-md" key={hit.name}>
-                        <div className="flex items-center justify-between">
-                          <a className="text-lg" href={hit.link}>
-                            {hit.name}
-                          </a>
-                          <div className="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-1">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                            </svg>
-                            {hit.stars}
-
-                            <GitFork className="w-5 h-5 ml-2 mr-1" />
-                            {hit.forks}
-
-                            <p className="ml-2">{hit.size / 1000} kB</p>
-                          </div>
-                        </div>
-
-                        <p className="text-base mt-1 text-gray-700">{hit.description}</p>
-                        <a href={hit.link} className="text-sm text-[#0ACF83]">{hit.link}</a>
+                  <div className="flex flex-wrap gap-3">
+                    {data.keywords.map((keyword: string) => (
+                      <div className="text-[#0ACF83] py-1 px-4 rounded-full bg-[#0ACF83]/20" key={keyword}>
+                        {keyword}
                       </div>
                     ))}
                   </div>
 
-                  <p className="text-gray-700 mt-8">Created by Julia, Muthu, James & Shlok.</p>
+                  {data.hits.length > 0 ? (
+                    <div className="mt-8">
+                      <p className="text-gray-700">Repositories you should consider:</p>
+                      {data.hits.map((hit: any) => (
+                        <div className="w-full bg-slate-100 mt-4 px-6 py-4 rounded-md" key={hit.name}>
+                          <div className="flex items-center justify-between">
+                            <a className="text-lg" href={hit.link}>
+                              {hit.name}
+                            </a>
+                            <div className="flex items-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-1">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                              </svg>
+                              {hit.stars}
+
+                              <GitFork className="w-5 h-5 ml-2 mr-1" />
+                              {hit.forks}
+
+                              <p className="ml-2">{hit.size / 1000} kB</p>
+                            </div>
+                          </div>
+
+                          <p className="text-base mt-1 text-gray-700">{hit.description}</p>
+                          <a href={hit.link} className="text-sm text-[#0ACF83]">{hit.link}</a>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center mt-12">
+                      <BugDroid className="w-8 h-8 text-gray-600 mr-2" />
+                      <p className="text-lg">No results found for this terrible prompt.</p>
+                    </div>
+                  )}
                 </article>
               ) : null
             }
